@@ -142,7 +142,7 @@ public class Dictionary {
             }
         }
         // все что ниже экспирементально, тоесть это может быть спакойно удалено
-        public void updateWord() { // можно доделать потом, здесь баг - элемент всместо того что бы сменить значение индекса - сменяет значение, и забирает следущий индекс и записывает туда пустую строку и сдвигает следущие элементы
+        public void updateWord(int index) { // можно доделать потом, здесь баг - элемент всместо того что бы сменить значение индекса - сменяет значение, и забирает следущий индекс и записывает туда пустую строку и сдвигает следущие элементы
                 Path pathToFile = Path.of("words.txt");
                 try {
                     words = Files.readAllLines(pathToFile);
@@ -151,9 +151,6 @@ public class Dictionary {
 
                 }
                 Scanner input = new Scanner(System.in);
-                System.out.print("Enter the index of word, or press |-1| - to back : ");
-                int indexNumber = input.nextInt();
-                input.nextLine();
 
                 System.out.print("Enter the learn word: ");
                 String learnWord = input.nextLine();
@@ -161,7 +158,7 @@ public class Dictionary {
                 String basicWord = input.nextLine();
 
                 //words.remove(index);
-                words.set(indexNumber, learnWord + "-" + basicWord );
+                words.set(index, learnWord + "-" + basicWord );
                 //System.out.println(words.size());
 
                 try {
@@ -169,6 +166,7 @@ public class Dictionary {
                 } catch (IOException e) {
                     System.out.println("Error in updateWord - method: Files.write... ");
                 }
+                System.out.printf("word was change on %s-%s\n" ,learnWord, basicWord );
                 for (String word: words) {
                     try {
                         Files.writeString(pathToFile, word + System.lineSeparator() , StandardOpenOption.APPEND, StandardOpenOption.CREATE );
