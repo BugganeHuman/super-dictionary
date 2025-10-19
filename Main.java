@@ -2,29 +2,32 @@ package dictionary;
 
 import java.util.Scanner;
 
-public class Main extends Dictionary  {
+public class Main extends Training  {
     public static void main (String[] args) {
         Dictionary myDictionary = new Dictionary();
         myDictionary.creatFileDictionary();
+        Training myTraining = new Training();
+
         Scanner input = new Scanner(System.in);
         while (true) {
-            System.out.print("Press: |0| - to exit, |1| - add word, |2| - show the dictionary, |3| - train mode:  ");
+            System.out.print("Press: |0| - to exit, |1| - add word, |2| - show the dictionary, |3| - training mode:  ");
 
 
 
-            int menuChoice = input.nextInt();
-            input.nextLine();
+            String menuChoice = input.nextLine();
+
+
+            // надо попробавать  сделать все выборы строками и проверять их как строки, а там где надо int
+            // просто засунуть в try catch
 
 
 
-
-
-            if (menuChoice == 0) {
+            if (menuChoice.equals("0") ) {
                 break;
             }
 
 
-            else if (menuChoice == 1) {
+            else if (menuChoice.equals("1") ) {
                 while (true) {
                     System.out.print("Enter the learn word, or press: |0| - back: ");
                     String learnWord = input.nextLine();
@@ -37,18 +40,18 @@ public class Main extends Dictionary  {
                 }
             }
 
-            else if (menuChoice == 2) {
+            else if (menuChoice.equals("2") ) {
                 while(true) {
 
                     System.out.println();
                 myDictionary.showDictionary(); // возможно надо убрать из while(true)
                     System.out.println();
                 System.out.print("Press: |0| - back, |1| - find word, |2| - delete word, |3| - update word: "); // мб вставить |3| - update the word
-                int showMenuChoice = input.nextInt();
-                input.nextLine();
-                if (showMenuChoice == 0) {break;}
+                String showMenuChoice = input.nextLine();
 
-                else if (showMenuChoice == 1) {
+                if (showMenuChoice.equals("0") ) {break;}
+
+                else if (showMenuChoice.equals("1")) {
                     while (true) {
                         System.out.print("Enter any word, or press |0| - to back: ");
                         String findWord = input.nextLine();
@@ -58,27 +61,30 @@ public class Main extends Dictionary  {
                         }
                     }
                 }
-            else if (showMenuChoice == 2){
+            else if (showMenuChoice.equals("2")){
                 while (true) {
                 System.out.print ("Enter the index of deleted word, or press |-1| - to back: ");
-                int choiceOfDelete = input.nextInt();
-                input.nextLine();
-                if (choiceOfDelete == -1) {break;}
+                String choiceOfDelete = input.nextLine();
+                if (choiceOfDelete.equals("-1") ) {break;}
                 else {
-                    myDictionary.deleteWord(choiceOfDelete);
-                    System.out.printf ("Word with index %d was deleted", choiceOfDelete);
+                    int choiceOfDeleteNumber = Integer.parseInt(choiceOfDelete);
+                    myDictionary.deleteWord(choiceOfDeleteNumber);
+                    System.out.printf ("Word with index %d was deleted\n", choiceOfDeleteNumber);
                 }
                 }
 
 
                 }
-            else if (showMenuChoice == 3) {
+            else if (showMenuChoice.equals("3")) {
                 while (true) {
                     System.out.print("Enter the index of word, or press |-1| - to back : ");
-                    int indexNumber = input.nextInt();
-                    input.nextLine();
-                    if (indexNumber == -1) {break;}
+                    String indexString = input.nextLine();
+
+                    if (indexString.equals("-1") ) {break;}
+                    else {
+                        int indexNumber = Integer.parseInt(indexString);
                     myDictionary.updateWord(indexNumber);
+                    }
 
 
                 }
@@ -91,6 +97,11 @@ public class Main extends Dictionary  {
                 }
 
 
+            }
+            else if (menuChoice.equals("3")){
+                while (true) {
+                    myTraining.createTraining();
+                }
             }
 
             else {
