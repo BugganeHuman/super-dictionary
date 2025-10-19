@@ -9,8 +9,16 @@ public class Main extends Dictionary  {
         Scanner input = new Scanner(System.in);
         while (true) {
             System.out.print("Press: |0| - to exit, |1| - add word, |2| - show the dictionary, |3| - train mode:  ");
+
+
+
             int menuChoice = input.nextInt();
             input.nextLine();
+
+
+
+
+
             if (menuChoice == 0) {
                 break;
             }
@@ -66,14 +74,27 @@ public class Main extends Dictionary  {
                 }
             else if (showMenuChoice == 3) {
                 while (true) {
-                myDictionary.updateWord();
+                    System.out.print("Enter the index of word, or press |-1| - to back : ");
+                    int indexNumber = input.nextInt();
+                    input.nextLine();
+                    if (indexNumber == -1) {break;}
+                    myDictionary.updateWord(indexNumber);
+
 
                 }
 
                 }
+
+            else  {
+                System.out.println ("Incorrect number");
+                }
                 }
 
 
+            }
+
+            else {
+                System.out.println ("Incorrect number");
             }
 
 
