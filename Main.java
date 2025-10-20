@@ -17,10 +17,6 @@ public class Main extends Training  {
             String menuChoice = input.nextLine();
 
 
-            // надо попробавать  сделать все выборы строками и проверять их как строки, а там где надо int
-            // просто засунуть в try catch
-
-
 
             if (menuChoice.equals("0") ) {
                 break;
@@ -98,12 +94,54 @@ public class Main extends Training  {
 
 
             }
+            
+
             else if (menuChoice.equals("3")){
                 while (true) {
-                    myTraining.createTraining();
+                    System.out.println("press |0| - to back");
+                    System.out.print("press: |1| - to train writing, |2| - to train speaking: ");
+                    String choiceInTraining = input.nextLine();
+                    if (choiceInTraining.equals("0")) {break;}
+
+
+                    else if (choiceInTraining.equals("1")) {
+                        while (true) {
+                        System.out.print("press: |1| - training to order, |2| - training - to random:  ");
+                        String choiceInWriting = input.nextLine();
+                        if (choiceInWriting.equals("0")) {break;}
+                            else if (choiceInWriting.equals("1")) {
+                                myTraining.trainingToWriteOrder();
+                        } else if (choiceInWriting.equals("2")) {
+                                myTraining.trainingToWriteRandom();
+                        }
+                        else {System.out.println ("Incorrect number");}
+                        }
+                    }
+
+                    else if (choiceInTraining.equals("2")) {
+                        while (true) {
+                            System.out.print("press: |1| - training to order, |2| - training - to random:  ");
+                            String choiceInTrainingSpeak = input.nextLine();
+                            if (choiceInTrainingSpeak.equals("0")) {break;}
+                            else if (choiceInTrainingSpeak.equals("1")) {
+                                myTraining.trainingToSpeakOrder();
+                            }
+                            else if (choiceInTrainingSpeak.equals("2")) {
+                                myTraining.trainingToSpeakRandom();
+                            }
+                            else {System.out.println ("Incorrect number");}
+
+                        }
+
+
+                    }
+                    else {System.out.println ("Incorrect number");}
                 }
             }
 
+
+
+            
             else {
                 System.out.println ("Incorrect number");
             }
@@ -114,8 +152,7 @@ public class Main extends Training  {
 
     }
 }
-// как должен выглядеть интерфейс: главное меню: press 1 - add word, 2 - show dictionary, 3 - train mode, 0 - back
-// при нажатие на 2 : press 1 - find word, 2 - delete word, mb 3 - update the word, 0 - back
+
 // при нажатие на 1 : basic word: ..., следущая строка: learn word: ..., следущая строка: word was added
 // при нажатие на 3: press 1 - train to order, 2 - train to random
 //   после этого в зависимости от выбора запускается либо рандомная версия, либо по порядку:
