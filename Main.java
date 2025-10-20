@@ -9,6 +9,7 @@ public class Main extends Training  {
         Training myTraining = new Training();
 
         Scanner input = new Scanner(System.in);
+        System.out.println ("Enter in this input |-readme| for reading to documentation");
         while (true) {
             System.out.print("Press: |0| - to exit, |1| - add word, |2| - show the dictionary, |3| - training mode:  ");
 
@@ -17,11 +18,22 @@ public class Main extends Training  {
             String menuChoice = input.nextLine();
 
 
+            // надо попробавать  сделать все выборы строками и проверять их как строки, а там где надо int
+            // просто засунуть в try catch
+
+
 
             if (menuChoice.equals("0") ) {
                 break;
             }
+                else if (menuChoice.equals("-readme")) {
+                    System.out.println ("\nHi there, this if program dictionary with training mode\n" +
+                            "If you already have a dictionary file, you can use it, but make sure it's called words.txt,\n" +
+                            "the words are written without spaces, separated by '-', and it's located in the root of the repository.\n" +
+                            "You can make it simpler: just copy your words into the created file, separated by '-', without spaces.\n" );
 
+
+            }
 
             else if (menuChoice.equals("1") ) {
                 while (true) {
@@ -94,7 +106,9 @@ public class Main extends Training  {
 
 
             }
-            
+            // tests
+
+
 
             else if (menuChoice.equals("3")){
                 while (true) {
@@ -141,7 +155,7 @@ public class Main extends Training  {
 
 
 
-            
+            // end tests
             else {
                 System.out.println ("Incorrect number");
             }
@@ -152,8 +166,3 @@ public class Main extends Training  {
 
     }
 }
-
-// при нажатие на 1 : basic word: ..., следущая строка: learn word: ..., следущая строка: word was added
-// при нажатие на 3: press 1 - train to order, 2 - train to random
-//   после этого в зависимости от выбора запускается либо рандомная версия, либо по порядку:
-//      press 1 - train writing, 2 - train speaking
