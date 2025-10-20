@@ -30,7 +30,7 @@ public class Dictionary {
 
 
         public void addWord(String learnWord, String basicWord) {
-                //creatFileDictionary();
+                
                 Path pathToFile = Path.of("words.txt");
                 try {
                 Files.writeString(pathToFile,learnWord + "-" + basicWord + System.lineSeparator() , StandardOpenOption.APPEND);
@@ -63,7 +63,7 @@ public class Dictionary {
 
 
 
-        public void findWord(String word) { // здесь баг
+        public void findWord(String word) { 
             Path pathToFile = Path.of("words.txt");
             try {
             words = Files.readAllLines(pathToFile);
@@ -84,11 +84,7 @@ public class Dictionary {
                     System.out.println("Error in word.split or tempArray.add ");
                 }
 
-                // баг здесь, слова не записываются в tempArray
-                // надо придумать ложить в tempArray word.split
-
-
-            //System.out.println(tempArray);
+               
             try {
                 if (tempArray.get(0).equals(word)) {
                     System.out.println(counter + " " + tempArray.get(0) + "-" + tempArray.get(1));
@@ -96,11 +92,7 @@ public class Dictionary {
                 }else if (tempArray.get(1).equals(word)) {
                     System.out.println(counter + " " + tempArray.get(0) + "-" + tempArray.get(1));
                     break;
-                } //else {
-                    //System.out.println("not find");
-                //}
-
-
+                } 
 
             }catch (Throwable _) {
                 System.out.println("Error in print the tampArray");
@@ -137,12 +129,12 @@ public class Dictionary {
 
 
             showDictionary();
-            } catch (Throwable _) { // здесь баг
+            } catch (Throwable _) { 
                 System.out.println("Error in delete the word");
             }
         }
-        // все что ниже экспирементально, тоесть это может быть спакойно удалено
-        public void updateWord(int index) { // можно доделать потом, здесь баг - элемент всместо того что бы сменить значение индекса - сменяет значение, и забирает следущий индекс и записывает туда пустую строку и сдвигает следущие элементы
+        
+        public void updateWord(int index) { 
                 Path pathToFile = Path.of("words.txt");
                 try {
                     words = Files.readAllLines(pathToFile);
@@ -157,9 +149,9 @@ public class Dictionary {
                 System.out.print("Enter the basic word: ");
                 String basicWord = input.nextLine();
 
-                //words.remove(index);
+                
                 words.set(index, learnWord + "-" + basicWord );
-                //System.out.println(words.size());
+              
 
                 try {
                 Files.write(pathToFile, new byte[0]);
@@ -175,15 +167,8 @@ public class Dictionary {
                     System.out.println("Error in record the file");
                     }
                 }
-            //showDictionary();
+            
         }
 
-        // конец экспиремента
+    
         }
-
-
-
-
-
-// мне надо методы, создания словаря(он должна быть во всех главных функциях, тоесть создать файл есои не создан),
-// добавления слов в словарь, просмотр словаря, поиск слов в словаре, удаление слов
