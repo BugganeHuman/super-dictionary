@@ -14,7 +14,6 @@ import java.util.Scanner;
 public class Dictionary {
     public static List<String> words = new ArrayList<>();
 
-
    public void creatFileDictionary() {
         Path pathToFile = Path.of("words.txt");
         try{
@@ -26,11 +25,8 @@ public class Dictionary {
         }
         }
 
-
-
-
         public void addWord(String learnWord, String basicWord) {
-                
+                //creatFileDictionary();
                 Path pathToFile = Path.of("words.txt");
                 try {
                 Files.writeString(pathToFile,learnWord + "-" + basicWord + System.lineSeparator() , StandardOpenOption.APPEND);
@@ -41,9 +37,6 @@ public class Dictionary {
                 }
 
         }
-
-
-
 
         public void showDictionary() {
             Path pathToFile = Path.of("words.txt");
@@ -60,14 +53,10 @@ public class Dictionary {
             }
         }
 
-
-
-
-        public void findWord(String word) { 
+        public void findWord(String word) { // здесь баг
             Path pathToFile = Path.of("words.txt");
             try {
             words = Files.readAllLines(pathToFile);
-
             }catch (IOException e) {
                 System.out.println ("Error in show the array of words");
             }
@@ -84,7 +73,6 @@ public class Dictionary {
                     System.out.println("Error in word.split or tempArray.add ");
                 }
 
-               
             try {
                 if (tempArray.get(0).equals(word)) {
                     System.out.println(counter + " " + tempArray.get(0) + "-" + tempArray.get(1));
@@ -92,7 +80,7 @@ public class Dictionary {
                 }else if (tempArray.get(1).equals(word)) {
                     System.out.println(counter + " " + tempArray.get(0) + "-" + tempArray.get(1));
                     break;
-                } 
+                }
 
             }catch (Throwable _) {
                 System.out.println("Error in print the tampArray");
@@ -102,9 +90,6 @@ public class Dictionary {
 
             }
             }
-
-
-
 
         public void deleteWord(int index) {
             Path pathToFile = Path.of ("words.txt");
@@ -126,15 +111,13 @@ public class Dictionary {
             Files.writeString(pathToFile, word + System.lineSeparator(), StandardOpenOption.APPEND );
 
             }
-
-
             showDictionary();
-            } catch (Throwable _) { 
+            } catch (Throwable _) { // здесь баг
                 System.out.println("Error in delete the word");
             }
         }
-        
-        public void updateWord(int index) { 
+
+        public void updateWord(int index) {
                 Path pathToFile = Path.of("words.txt");
                 try {
                     words = Files.readAllLines(pathToFile);
@@ -149,9 +132,8 @@ public class Dictionary {
                 System.out.print("Enter the basic word: ");
                 String basicWord = input.nextLine();
 
-                
                 words.set(index, learnWord + "-" + basicWord );
-              
+
 
                 try {
                 Files.write(pathToFile, new byte[0]);
@@ -167,8 +149,7 @@ public class Dictionary {
                     System.out.println("Error in record the file");
                     }
                 }
-            
+
         }
 
-    
         }
