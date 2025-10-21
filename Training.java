@@ -16,11 +16,11 @@ public class Training extends Dictionary {
         trainingWords.clear();
         try {
         trainingWords = Files.readAllLines(pathToFile);
-
         } catch (IOException e) {
             System.out.println("error in recording words to List trainingWords");
         }
     }
+
     public void trainingToWriteRandom () {
         createTraining();
         while (true) {
@@ -42,9 +42,8 @@ public class Training extends Dictionary {
         }
 
     }
-
-
         }
+
     public void trainingToWriteOrder() {
         createTraining();
         int sizeArray = trainingWords.size();
@@ -69,6 +68,7 @@ public class Training extends Dictionary {
             }
         }
     }
+
     public void trainingToSpeakRandom() {
         createTraining();
         while (true) {
@@ -100,8 +100,6 @@ public class Training extends Dictionary {
             String usersWatchToTranslate = input.nextLine();
             if (usersWatchToTranslate.equals("0")) {break;}
             System.out.printf("\nCorrect translate is |%s|\n\n" , firstElement);
-
-
 
             sizeArray--;
             if (sizeArray == 0) {
