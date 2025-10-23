@@ -17,7 +17,7 @@ public class Main extends Training  {
         System.out.println ("Enter in this input |-readme| for reading to documentation");
         while (true) {
             System.out.print("Press: |0| - to exit, |1| - add word, |2| - show the dictionary, |3| - training mode, |4| - make back up:  ");
-            
+
             String menuChoice = input.nextLine();
 
             if (menuChoice.equals("0") ) {
@@ -89,8 +89,13 @@ public class Main extends Training  {
 
                     if (indexString.equals("-1") ) {break;}
                     else {
+                        try {
                         int indexNumber = Integer.parseInt(indexString);
                     myDictionary.updateWord(indexNumber);
+
+                        } catch (Throwable _) {
+                            System.out.println("Incorrect index");
+                        }
                     }
                 }
             }
