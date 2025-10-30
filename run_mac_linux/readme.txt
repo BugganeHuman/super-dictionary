@@ -2,6 +2,7 @@
 While in the directory with the .sh file,
 type the command without quotes "chmod +x run.sh"
 and the command to run "./run.sh"
+you are need the java 20.0.2 
 
 ### Creating a Shortcut 
 **Linux / Ubuntu:**  
@@ -15,3 +16,4 @@ and the command to run "./run.sh"
 2. Paste `/path/to/run_dictionary.sh`.  
 3. Save → drag to Desktop.  
 4. Double-click to run.
+
